@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.mainfragments.ChooseFragment">
+
+    <TextView
+        android:id="@+id/choose_title"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="0.2"
+        android:layout_marginHorizontal="50dp"
+        android:gravity="center"
+        android:text="Choose your role"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@id/choose_toshare_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <LinearLayout
+        android:id="@+id/choose_toshare_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="0.4"
+        app:layout_constraintEnd_toEndOf="@+id/choose_title"
+        app:layout_constraintStart_toStartOf="@+id/choose_title"
+        app:layout_constraintTop_toBottomOf="@+id/choose_title"
+        app:layout_constraintBottom_toTopOf="@id/choose_torent_container"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I own property for leasing / \nI already rented a place and need roommate"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/signup_as_landlord_btn"
+            app:layout_constraintEnd_toEndOf="@id/signup_as_landlord_btn"
+            app:layout_constraintStart_toStartOf="@id/signup_as_landlord_btn"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/signup_as_landlord_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="35dp"
+            android:paddingVertical="35dp"
+            android:layout_gravity="center"
+            android:text="@string/signup_as_landlord_btn_text"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/choose_torent_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/choose_toshare_container"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="I need a place"
+            android:textSize="18sp"/>
+
+        <Button
+            android:id="@+id/signup_as_tenant_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="35dp"
+            android:paddingVertical="35dp"
+            android:text="@string/signup_as_tenant_btn_text"
+            android:layout_gravity="center"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

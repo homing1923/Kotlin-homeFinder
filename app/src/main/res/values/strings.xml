@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Roommate Finder on Campus</string>
+    <string name="co_name">Designed by Ming Lau cooperated with Andrew J. Wang</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="web_client_id">49186377558-vek7iaipboj8umt4jjsqpfggvk1q0rpl.apps.googleusercontent.com</string>
+    <string name="hint_enter_email">Enter Your Email</string>
+    <string name="hint_enter_password">Enter Your Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_google">GG</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="signup_as_landlord_btn_text">To Share</string>
+    <string name="signup_as_tenant_btn_text">To Rent</string>
+    <string name="app_name_newline">Roommate Finder\non Campus</string>
+
+    <string name="sign_up">Sign Up</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="create_account">Create Account</string>
+    <string name="text_home">Home</string>
+    <string name="text_setting">Setting</string>
+    <string name="enter_confirm_password">Enter Confirm Password</string>
+</resources>

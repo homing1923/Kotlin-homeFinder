@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout5"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.mainfragments.AddHouseFragment">
+
+    <TextView
+        android:id="@+id/add_title"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="Share Your Place"
+        android:textAlignment="center"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toTopOf="@id/add_info_container1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="0.08" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/add_info_container1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="@id/add_title"
+        app:layout_constraintStart_toStartOf="@id/add_title"
+        app:layout_constraintTop_toBottomOf="@id/add_title"
+        app:layout_constraintBottom_toTopOf="@id/add_info_container2"
+        app:layout_constraintVertical_weight="0.6">
+        <TextView
+            android:id="@+id/add_address_tv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="Address"
+            app:layout_constraintVertical_weight="0.1"
+            app:layout_constraintHorizontal_weight="0.3"
+            app:layout_constraintEnd_toStartOf="@id/add_address_edt"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/add_type_tv"/>
+
+        <EditText
+            android:id="@+id/add_address_edt"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autofillHints="Enter Address here"
+            android:hint="Enter Address here"
+            android:inputType="text"
+            app:layout_constraintHorizontal_weight="0.7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/add_address_tv"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/add_address_tv"/>
+
+        <TextView
+            android:id="@+id/add_type_tv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="Type"
+            app:layout_constraintVertical_weight="0.1"
+            app:layout_constraintHorizontal_weight="0.3"
+            app:layout_constraintEnd_toStartOf="@id/add_type_edt"
+            app:layout_constraintStart_toStartOf="@id/add_address_tv"
+            app:layout_constraintTop_toBottomOf="@id/add_address_tv"
+            app:layout_constraintBottom_toTopOf="@id/add_people_tv"/>
+
+        <EditText
+            android:id="@+id/add_type_edt"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autofillHints="Enter Address here"
+            android:hint="Enter Address here"
+            android:inputType="text"
+            app:layout_constraintHorizontal_weight="0.7"
+            app:layout_constraintStart_toEndOf="@id/add_type_tv"
+            app:layout_constraintTop_toTopOf="@id/add_type_tv"
+            app:layout_constraintEnd_toEndOf="@id/add_address_edt"
+            app:layout_constraintBottom_toBottomOf="@id/add_type_tv"
+            />
+
+        <TextView
+            android:id="@+id/add_people_tv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="People"
+            app:layout_constraintVertical_weight="0.1"
+            app:layout_constraintHorizontal_weight="0.3"
+            app:layout_constraintEnd_toStartOf="@id/add_type_edt"
+            app:layout_constraintStart_toStartOf="@id/add_type_tv"
+            app:layout_constraintTop_toBottomOf="@id/add_type_tv"
+            app:layout_constraintBottom_toTopOf="@id/add_rent_tv"/>
+
+        <EditText
+            android:id="@+id/add_people_edt"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autofillHints="Enter Address here"
+            android:hint="Enter Address here"
+            android:inputType="text"
+            app:layout_constraintHorizontal_weight="0.7"
+            app:layout_constraintBottom_toBottomOf="@+id/add_people_tv"
+            app:layout_constraintEnd_toEndOf="@id/add_address_edt"
+            app:layout_constraintStart_toEndOf="@+id/add_address_tv"
+            app:layout_constraintTop_toTopOf="@+id/add_people_tv" />
+
+        <TextView
+            android:id="@+id/add_rent_tv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="Rent"
+            app:layout_constraintVertical_weight="0.1"
+            app:layout_constraintHorizontal_weight="0.3"
+            app:layout_constraintEnd_toStartOf="@id/add_rent_edt"
+            app:layout_constraintStart_toStartOf="@id/add_address_tv"
+            app:layout_constraintTop_toBottomOf="@id/add_people_tv"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <EditText
+            android:id="@+id/add_rent_edt"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autofillHints="Enter Address here"
+            android:hint="Enter Address here"
+            android:inputType="text"
+            app:layout_constraintHorizontal_weight="0.7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/add_rent_tv"
+            app:layout_constraintTop_toTopOf="@id/add_rent_tv"
+            app:layout_constraintBottom_toBottomOf="@id/add_rent_tv"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/add_info_container2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="@id/add_info_container1"
+        app:layout_constraintHorizontal_weight="0.1"
+        app:layout_constraintStart_toStartOf="@id/add_info_container1"
+        app:layout_constraintTop_toBottomOf="@id/add_info_container1"
+        app:layout_constraintBottom_toTopOf="@id/add_info_container3"
+        app:layout_constraintVertical_weight="0.3">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/add_info_container2_sub1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/Sage_12"
+            app:layout_constraintHorizontal_weight="0.1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/add_info_container2_sub2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/add_info_container2_sub1_hydro_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Hydro?"
+                app:layout_constraintBottom_toTopOf="@id/add_info_container2_sub1_hydro_checkbox"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <CheckBox
+                android:id="@+id/add_info_container2_sub1_hydro_checkbox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/add_info_container2_sub1_hydro_edt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/add_info_container2_sub1_hydro_tv" />
+
+            <EditText
+                android:id="@+id/add_info_container2_sub1_hydro_edt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="enter amount"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/add_info_container2_sub1_hydro_checkbox" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/add_info_container2_sub2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/Sage_12"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/add_info_container2_sub3"
+            app:layout_constraintHorizontal_weight="0.1"
+            app:layout_constraintStart_toEndOf="@+id/add_info_container2_sub1"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/add_info_container2_sub2_heat_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Heat?"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@id/add_info_container2_sub2_heat_checkbox"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <CheckBox
+                android:id="@+id/add_info_container2_sub2_heat_checkbox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/add_info_container2_sub2_heat_edt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/add_info_container2_sub2_heat_tv" />
+
+            <EditText
+                android:id="@+id/add_info_container2_sub2_heat_edt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/add_info_container2_sub2_heat_checkbox" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/add_info_container2_sub3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/Sage_12"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="0.1"
+            app:layout_constraintStart_toEndOf="@+id/add_info_container2_sub2"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/add_info_container2_sub3_water_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Water?"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@id/add_info_container2_sub3_water_checkbox"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <CheckBox
+                android:id="@+id/add_info_container2_sub3_water_checkbox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/add_info_container2_sub3_water_edt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/add_info_container2_sub3_water_tv" />
+
+            <EditText
+                android:id="@+id/add_info_container2_sub3_water_edt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/add_info_container2_sub3_water_checkbox" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/add_info_container3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="0.2"
+        app:layout_constraintBottom_toTopOf="@id/add_info_container4"
+        app:layout_constraintEnd_toEndOf="@id/add_info_container1"
+        app:layout_constraintStart_toStartOf="@id/add_info_container1"
+        app:layout_constraintTop_toBottomOf="@id/add_info_container2">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/add_info_container3_sub1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintHorizontal_weight="0.1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/add_info_container3_sub2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/add_info_container3_sub1_pet_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pet?"
+                app:layout_constraintBottom_toTopOf="@id/add_info_container3_sub1_pet_checkbox"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <CheckBox
+                android:id="@+id/add_info_container3_sub1_pet_checkbox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/add_info_container3_sub1_pet_tv" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/add_info_container3_sub2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintHorizontal_weight="0.1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/add_info_container3_sub1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/add_info_container3_sub2_smoke_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Smoke"
+                app:layout_constraintBottom_toTopOf="@id/add_info_container3_sub2_smoke_checkbox"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <CheckBox
+                android:id="@+id/add_info_container3_sub2_smoke_checkbox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/add_info_container3_sub2_smoke_tv" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/add_info_container4"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="0.1"
+        app:layout_constraintBottom_toTopOf="@id/create_house_btn"
+        app:layout_constraintEnd_toEndOf="@id/add_info_container1"
+        app:layout_constraintStart_toStartOf="@id/add_info_container1"
+        app:layout_constraintTop_toBottomOf="@id/add_info_container3">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/create_house_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginVertical="8dp"
+        android:layout_marginHorizontal="15dp"
+        android:text="Create"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/add_info_container4"
+        app:layout_constraintVertical_weight="0.15" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

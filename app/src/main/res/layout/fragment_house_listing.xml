@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/frameLayout4"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.mainfragments.HouseListingFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/house_listing_title"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Select a campus"
+        android:textSize="24sp"
+        android:gravity="center_vertical|center_horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/house_listing_spinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/gotoMap_btn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="0.1"
+        app:layout_constraintHorizontal_weight="0.8"/>
+
+    <ImageButton
+        android:id="@+id/gotoMap_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/ic_baseline_map_24"
+        app:layout_constraintStart_toEndOf="@id/house_listing_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/house_listing_title"
+        app:layout_constraintBottom_toBottomOf="@id/house_listing_title"
+        app:layout_constraintHorizontal_weight="0.2"
+        app:layout_constraintVertical_weight="0.1" />
+
+    <Spinner
+        android:id="@+id/house_listing_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/house_listing_title"
+        app:layout_constraintBottom_toTopOf="@+id/house_listing_lv"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/house_listing_lv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/house_listing_spinner"
+        app:layout_constraintTop_toBottomOf="@id/house_listing_spinner"
+        app:layout_constraintVertical_weight="0.9" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

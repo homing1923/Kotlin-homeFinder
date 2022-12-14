@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainnav"
+    app:startDestination="@id/signUpChooseFragment">
+
+    <fragment
+        android:id="@+id/signUpChooseFragment"
+        android:name="com.gp4.homefinder.ui.mainfragments.ChooseFragment"
+        android:label="fragment_role_choose"
+        tools:layout="@layout/fragment_role_choose" >
+        <action
+            android:id="@+id/action_signUpChooseFragment_to_selectCampusFragment"
+            app:destination="@id/selectCampusFragment" />
+        <action
+            android:id="@+id/action_signUpChooseFragment_to_addHouseFragment"
+            app:destination="@id/addHouseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectCampusFragment"
+        android:name="com.gp4.homefinder.ui.mainfragments.SelectCampusFragment"
+        android:label="fragment_select_campus"
+        tools:layout="@layout/fragment_select_campus" >
+        <action
+            android:id="@+id/action_selectCampusFragment_to_houseListingFragment"
+            app:destination="@id/houseListingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/houseListingFragment"
+        android:name="com.gp4.homefinder.ui.mainfragments.HouseListingFragment"
+        android:label="fragment_house_listing"
+        tools:layout="@layout/fragment_house_listing" />
+    <fragment
+        android:id="@+id/addHouseFragment"
+        android:name="com.gp4.homefinder.ui.mainfragments.AddHouseFragment"
+        android:label="fragment_add_house"
+        tools:layout="@layout/fragment_add_house" />
+</navigation>

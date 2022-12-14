@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <!-- This a "Splash Screen" XML file, here all the text view, Image view are laid in a linearly fashion inside the Linear layout. The reason of linear layout is for accurately placing the logo and the progress bar without happen to use the constraints -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/linearLayout"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".ui.splashfragments.SplashFragment"
+android:background="@color/EggShell_1">
+
+<ImageView
+    android:id="@+id/imageView"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_marginTop="200dp"
+    android:src="@mipmap/ic_launcher_dummy"
+    app:layout_constraintBottom_toTopOf="@+id/textView"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+<TextView
+    android:id="@+id/textView"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="21dp"
+    android:gravity="center"
+    android:padding="30dp"
+    android:text="@string/app_name"
+    android:textColor="@color/black"
+    android:textSize="20sp"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toTopOf="@+id/progressBar"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+<ProgressBar
+    android:id="@+id/progressBar"
+    android:layout_width="wrap_content"
+    android:layout_height="0dp"
+    android:layout_marginBottom="50dp"
+    android:indeterminateTint="@color/black"
+    app:layout_constraintBottom_toTopOf="@+id/textView1"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+<TextView
+    android:id="@+id/textView1"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="14dp"
+    android:layout_marginLeft="14dp"
+    android:layout_marginEnd="14dp"
+    android:layout_marginRight="14dp"
+    android:layout_marginBottom="79dp"
+    android:gravity="center"
+    android:text="@string/co_name"
+    android:textAlignment="center"
+    android:textColor="@color/black"
+    android:textSize="10sp"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
