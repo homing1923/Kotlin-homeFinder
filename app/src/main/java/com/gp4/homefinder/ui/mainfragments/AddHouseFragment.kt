@@ -2,6 +2,7 @@ package com.gp4.homefinder.ui.mainfragments
 
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.graphics.Rect
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -14,6 +15,8 @@ import android.widget.DatePicker
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.gp4.homefinder.R
 import com.gp4.homefinder.data.DataSource
 import com.gp4.homefinder.data.adapter.HouseAdapter
@@ -172,19 +175,20 @@ class AddHouseFragment : Fragment(), HouseCreateSuccessCallback, HouseAddToUserS
             houseRepository.oddOneHouseByCampus(
                 requireContext(),
                 House(
-                    newHouseAddress!!,
-                    newHouseType!!,
-                    newHouseRentalCost,
-                    newHouseHydroCost,
-                    newHouseWaterCost,
-                    newHouseHeatCost,
-                    newHouseMaxCapacity!!,
-                    newHouseAvailabilty!!,
-                    newHouseAllowSmoke,
-                    newHouseAllowPet,
-                    newHouseIncludeHydro!!,
-                    newHouseIncludeWater!!,
-                    newHouseIncludeHeat!!
+                    address = newHouseAddress!!,
+                    houseType = newHouseType!!,
+                    rentalCost = newHouseRentalCost,
+                    hydroCost = newHouseHydroCost,
+                    waterCost = newHouseWaterCost,
+                    heatCost = newHouseHeatCost,
+                    maxCapacity = newHouseMaxCapacity!!,
+                    availabilty = newHouseAvailabilty!!,
+                    allowSmoke = newHouseAllowSmoke,
+                    allowPet = newHouseAllowPet,
+                    includeHydro = newHouseIncludeHydro!!,
+                    includeWater = newHouseIncludeWater!!,
+                    includeHeat = newHouseIncludeHeat!!,
+                    createdByUser = dataSource.currentUser!!.email
                 ),
                 dataSource.currentCampus!!,
                 this
@@ -222,11 +226,9 @@ class AddHouseFragment : Fragment(), HouseCreateSuccessCallback, HouseAddToUserS
     }
 
     override fun houseAddSuccessCallback() {
-        val action = AddHouseFragmentDirections.actionAddHouseFragmentToHouseListingFragment()
-        navController.navigate(action)
+        navController.navigate(R.id.houseListingFragment)
     }
 }
-
 
 
 class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener{

@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/Ecru_13"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
 
     <TextView
         android:id="@+id/house_view_address_tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Address:"
+        android:layout_marginHorizontal="8dp"
+        android:background="@color/DeepChampagne_14"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,6 +36,8 @@
         android:textAlignment="center"
         android:text="Type"
         android:enabled="false"
+        android:textSize="12sp"
+        android:layout_marginHorizontal="5dp"
         app:layout_constraintBottom_toTopOf="@+id/house_view_rent_tv"
         app:layout_constraintEnd_toEndOf="@+id/house_view_rent_tv"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,6 +48,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="Rent"
+        android:background="@color/DeepChampagne_14"
         app:layout_constraintBottom_toTopOf="@id/house_view_rent"
         app:layout_constraintEnd_toStartOf="@+id/house_view_water_chip"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,6 +73,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="For"
+        android:background="@color/DeepChampagne_14"
         app:layout_constraintBottom_toTopOf="@id/house_view_people"
         app:layout_constraintEnd_toEndOf="@+id/house_view_rent"
         app:layout_constraintStart_toStartOf="parent"
@@ -152,7 +158,5 @@
         android:enabled="false"
         app:layout_constraintStart_toStartOf="@+id/house_view_hydro_chip"
         app:layout_constraintTop_toBottomOf="@+id/house_view_pet_chip" />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:background="@color/ChampagnePink_3">
+    android:background="@color/DeepChampagne_14">
 
     <TextView
         android:id="@+id/campus_view_title"

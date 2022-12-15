@@ -6,8 +6,10 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.gp4.homefinder.data.DataSource
+import com.gp4.homefinder.data.helpers.GetAllCreatedHouseSuccessCallback
 import com.gp4.homefinder.data.helpers.HouseAddToUserSuccessCallback
 import com.gp4.homefinder.data.helpers.HouseCreateSuccessCallback
 import com.gp4.homefinder.data.models.House
@@ -75,6 +77,26 @@ class UserRepository {
             .set(newHouse)
             .addOnSuccessListener {
                 houseAddToUserSuccessCallback.houseAddSuccessCallback()
+            }
+    }
+
+    fun getAllCreatedHouse(getAllCreatedHouseSuccessCallback: GetAllCreatedHouseSuccessCallback){
+        myData
+            .document(dataSource.currentUser!!.id)
+            .collection(houseCollectionName)
+            .get()
+            .addOnSuccessListener {
+                val newHouselist:MutableList<House> = mutableListOf()
+                it.documents.forEach { each ->
+                    each.toObject(House::class.java).also { newHouse->
+                        if(newHouse !== null){
+                            newHouselist.add(newHouse)
+                        }else{
+                            Log.d("D1", "getAllCreatedHouse: Cast to house failed")
+                        }
+                    }
+                }
+                getAllCreatedHouseSuccessCallback.getAllSuccess(newHouselist)
             }
     }
 

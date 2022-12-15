@@ -47,7 +47,6 @@ class SignInFragment : Fragment() {
         super.onCreate(savedInstanceState)
         prefs = (activity as SplashScreenActivity).getSharedPreferences(packageName, AppCompatActivity.MODE_PRIVATE)
         auth = Firebase.auth
-
         FirebaseApp.initializeApp(activity as SplashScreenActivity)
     }
 
@@ -115,6 +114,7 @@ class SignInFragment : Fragment() {
                     saveToPrefs(email, password, user.uid)
                 }
                 userRepository.getUserData(activity as SplashScreenActivity)
+                checkPrefCampus()
                 val action = SignInFragmentDirections.actionSignInFragmentToMainActivity()
                 navController.navigate(action)
             }else{
@@ -124,6 +124,17 @@ class SignInFragment : Fragment() {
             }
         }
         //signIn using FirebaseAuth
+    }
+
+    private fun checkPrefCampus() {
+        if(prefs.contains("PREF_CAMPUS")){
+            dataSource.currentCampusId = prefs.getInt("PREF_CAMPUS", -1)
+            if(dataSource.currentCampusId == -1){
+                dataSource.currentCampusId = null
+            }else{
+                dataSource.currentCampus = dataSource.listOfCampus[dataSource.currentCampusId!!]
+            }
+        }
     }
 
     private fun saveToPrefs(email: String, password: String, id:String) {

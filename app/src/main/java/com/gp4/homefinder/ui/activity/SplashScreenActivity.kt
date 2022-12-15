@@ -42,8 +42,7 @@ class SplashScreenActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             // This method will be executed once the timer is over
             // Start your app main activity
-            val action = SplashFragmentDirections.actionSplashFragmentToEntryFragment()
-            this.navController.navigate(action)
+            this.navController.navigate(R.id.entryFragment)
         }, SPLASH_TIME_OUT)
     }
 

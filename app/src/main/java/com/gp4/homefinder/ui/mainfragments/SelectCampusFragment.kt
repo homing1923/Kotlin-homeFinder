@@ -2,12 +2,14 @@ package com.gp4.homefinder.ui.mainfragments
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.SharedPreferences
 import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
@@ -39,6 +41,9 @@ class SelectCampusFragment : Fragment() , OnItemClickListener{
     private val binding get() = _binding!!
 
     private lateinit var dataSource:DataSource
+    private lateinit var prefs: SharedPreferences
+    private var prefName:String = "com.gp4.homefinder"
+
     private lateinit var listViewAdapter: CampusAdapter
 
     private lateinit var geocoder: Geocoder
@@ -132,8 +137,14 @@ class SelectCampusFragment : Fragment() , OnItemClickListener{
 
         binding.selectCampusSendBtn.setOnClickListener {
             if(dataSource.currentCampus !== null){
-                val action = SelectCampusFragmentDirections.actionSelectCampusFragmentToHouseListingFragment()
-                navController.navigate(action)
+                prefs =  requireContext().getSharedPreferences(prefName, AppCompatActivity.MODE_PRIVATE)
+                if(dataSource.currentCampusId !== null){
+                    prefs.edit().putInt("PREF_CAMPUS", dataSource.currentCampusId!!).apply()
+                    Log.d("D1", "putting campus id : ${dataSource.currentCampusId}")
+                }else{
+                    Log.d("D1", "putting campus id : ${dataSource.currentCampusId}")
+                }
+                navController.navigate(R.id.houseListingFragment)
             }else{
                 Toast.makeText(requireContext(), "Please select a campus", Toast.LENGTH_SHORT).show()
             }

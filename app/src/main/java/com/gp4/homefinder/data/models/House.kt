@@ -21,6 +21,7 @@ data class House (
     var includeHydro:Boolean = false,
     var includeWater:Boolean = false,
     var includeHeat:Boolean = false,
+    var createdByUser:String = "",
     var id:String = UUID.randomUUID().toString(),
 ){
     companion object{
