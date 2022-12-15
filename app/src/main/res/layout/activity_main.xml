@@ -7,17 +7,15 @@
     tools:context=".ui.activity.MainActivity"
     android:background="@color/EggShell_1">
 
-
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/container2"
+        android:id="@+id/mainFragmentContainer"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:defaultNavHost="true"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/main_bottom_menu"
-        app:navGraph="@navigation/mainnav"
-        tools:layout_editor_absoluteX="-16dp"/>
+        app:navGraph="@navigation/mainnav"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/main_bottom_menu"

@@ -6,6 +6,7 @@ class Campus(
     var address:String = "",
     var lat:Double = 0.0,
     var lng:Double = 0.0,
-    var postal:String = ""
+    var postal:String = "",
+    var id:Int? = null
 ) {
 }

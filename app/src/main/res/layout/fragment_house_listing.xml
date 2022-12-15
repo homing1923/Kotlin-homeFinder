@@ -42,16 +42,25 @@
         app:layout_constraintVertical_weight="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/house_listing_title"
-        app:layout_constraintBottom_toTopOf="@+id/house_listing_lv"/>
+        app:layout_constraintBottom_toTopOf="@+id/swipe_layout"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/house_listing_lv"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginHorizontal="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/house_listing_spinner"
         app:layout_constraintStart_toStartOf="@id/house_listing_spinner"
         app:layout_constraintTop_toBottomOf="@id/house_listing_spinner"
-        app:layout_constraintVertical_weight="0.9" />
+        app:layout_constraintVertical_weight="0.9">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/house_listing_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

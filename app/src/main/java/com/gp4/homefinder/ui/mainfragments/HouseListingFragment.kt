@@ -8,17 +8,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.lifecycle.Observer
 import androidx.navigation.NavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.gp4.homefinder.data.DataSource
 import com.gp4.homefinder.data.models.House
 import com.gp4.homefinder.data.adapter.HouseAdapter
+import com.gp4.homefinder.data.helpers.GetListSuccessCallback
 import com.gp4.homefinder.data.models.Campus
+import com.gp4.homefinder.data.models.OnItemClickListener
 import com.gp4.homefinder.data.repos.HouseRepository
 import com.gp4.homefinder.databinding.FragmentHouseListingBinding
 import com.gp4.homefinder.ui.activity.MainActivity
 
-class HouseListingFragment : Fragment() {
+class HouseListingFragment : Fragment(), OnItemClickListener, GetListSuccessCallback {
     val TAG = "D1"
 
     private lateinit var navController: NavController
@@ -32,7 +35,9 @@ class HouseListingFragment : Fragment() {
     private var localHouseList: MutableList<House> = mutableListOf()
 
     private lateinit var dataSource:DataSource
-    private lateinit var spinnerAdapter: ArrayAdapter<Campus>
+    private lateinit var spinnerAdapter: ArrayAdapter<String>
+
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,28 +52,38 @@ class HouseListingFragment : Fragment() {
         dataSource = DataSource.getInstance()
         houseRepository = HouseRepository()
 
-        spinnerAdapter = initializeSpinner((activity as MainActivity), android.R.layout.simple_spinner_item, dataSource.listOfCampus)
+        spinnerAdapter = initializeSpinner((activity as MainActivity), android.R.layout.simple_spinner_item, dataSource.simpleCampusList)
         binding.houseListingSpinner.adapter = spinnerAdapter
+        if(dataSource.currentCampusId !== null){
+            binding.houseListingSpinner.setSelection(dataSource.currentCampusId!!)
+        }
+
+        houseListAdapter = HouseAdapter(requireContext(), localHouseList, this)
+        binding.houseListingLv.adapter = houseListAdapter
+        binding.houseListingLv.layoutManager = GridLayoutManager(requireContext(), 2)
+        houseListAdapter.notifyDataSetChanged()
+
+        swipeRefreshLayout = binding.swipeLayout
+        swipeRefreshLayout.setOnRefreshListener {
+            loadListByCampus()
+            swipeRefreshLayout.isRefreshing = false
+        }
+
         setUpSpinnerOnClick()
 
-        houseListAdapter = HouseAdapter(activity as MainActivity, localHouseList)
-        binding.houseListingLv.adapter = houseListAdapter
+    }
 
+    private fun loadListByCampus() {
+        Log.d(TAG, "HouseListingFragment.onResumed : Start observe")
         if(dataSource.currentCampus !== null){
-            houseRepository.getListByCampus(dataSource.currentCampus!!)
-            houseRepository.houseLiveData.observe(activity as MainActivity, Observer { CampusListFromServer ->
-                localHouseList.clear()
-                CampusListFromServer.forEach {
-                    localHouseList.add((it))
-                }
-                houseListAdapter.notifyItemRangeChanged(0, localHouseList.size)
-            })
+            houseRepository.getListByCampus(this, dataSource.currentCampus!!)
+            houseListAdapter.notifyDataSetChanged()
         }else{
-            Log.d(TAG, "HouseListingFragment.onCreated : dataSource.currentCampus null")
+            Log.d(TAG, "HouseListingFragment.onResumed : dataSource.currentCampus null")
         }
     }
 
-    private fun initializeSpinner(mainActivity: MainActivity, simpleSpinnerItem: Int, listOfCampus: MutableList<Campus>):ArrayAdapter<Campus> {
+    private fun initializeSpinner(mainActivity: MainActivity, simpleSpinnerItem: Int, listOfCampus: MutableList<String>):ArrayAdapter<String> {
         return ArrayAdapter(mainActivity, simpleSpinnerItem, listOfCampus)
     }
 
@@ -77,7 +92,7 @@ class HouseListingFragment : Fragment() {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, id: Long) {
                 Log.d(TAG, "onItemSelected: User selection : ${dataSource.listOfCampus[position]}")
                 dataSource.currentCampus = dataSource.listOfCampus[position]
-                TODO("UPDATE LISTVIEW BASE ON USER SELECTION")
+                loadListByCampus()
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -85,4 +100,20 @@ class HouseListingFragment : Fragment() {
             }
         }
     }
+
+    override fun onCampusClick(index:Int, campus: Campus, isClickable: Boolean) {
+        //DO Nothing
+    }
+
+    override fun onHouseClick(house: House) {
+        //Navigate to map
+    }
+
+    override fun getListSuccessCallback(currentCampus: Campus, retrievedHouseList: MutableList<House>) {
+        localHouseList.clear()
+        localHouseList.addAll(retrievedHouseList)
+        dataSource.currentCampus = currentCampus
+        houseListAdapter.notifyDataSetChanged()
+    }
+
 }

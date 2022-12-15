@@ -3,18 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainnav"
-    app:startDestination="@id/signUpChooseFragment">
+    app:startDestination="@id/chooseFragment">
 
     <fragment
-        android:id="@+id/signUpChooseFragment"
+        android:id="@+id/chooseFragment"
         android:name="com.gp4.homefinder.ui.mainfragments.ChooseFragment"
-        android:label="fragment_role_choose"
-        tools:layout="@layout/fragment_role_choose" >
+        android:label="Choose Your Role"
+        tools:layout="@layout/fragment_choose" >
         <action
-            android:id="@+id/action_signUpChooseFragment_to_selectCampusFragment"
+            android:id="@+id/action_chooseFragment_to_selectCampusFragment"
             app:destination="@id/selectCampusFragment" />
         <action
-            android:id="@+id/action_signUpChooseFragment_to_addHouseFragment"
+            android:id="@+id/action_chooseFragment_to_addHouseFragment"
             app:destination="@id/addHouseFragment" />
     </fragment>
     <fragment
@@ -30,10 +30,28 @@
         android:id="@+id/houseListingFragment"
         android:name="com.gp4.homefinder.ui.mainfragments.HouseListingFragment"
         android:label="fragment_house_listing"
-        tools:layout="@layout/fragment_house_listing" />
+        tools:layout="@layout/fragment_house_listing" >
+        <action
+            android:id="@+id/action_houseListingFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addHouseFragment"
         android:name="com.gp4.homefinder.ui.mainfragments.AddHouseFragment"
         android:label="fragment_add_house"
-        tools:layout="@layout/fragment_add_house" />
+        tools:layout="@layout/fragment_add_house" >
+        <action
+            android:id="@+id/action_addHouseFragment_to_houseListingFragment"
+            app:destination="@id/houseListingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.gp4.homefinder.ui.mainfragments.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" />
+    <fragment
+        android:id="@+id/myHouseFragment"
+        android:name="com.gp4.homefinder.ui.mainfragments.MyHouseFragment"
+        android:label="fragment_my_house"
+        tools:layout="@layout/fragment_my_house" />
 </navigation>

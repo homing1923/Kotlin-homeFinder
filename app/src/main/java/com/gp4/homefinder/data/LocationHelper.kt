@@ -8,20 +8,17 @@ import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
-import android.os.Looper
 import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.google.android.gms.location.*
 import com.google.android.gms.location.LocationServices.getFusedLocationProviderClient
-import com.google.android.gms.location.Priority.PRIORITY_BALANCED_POWER_ACCURACY
-import com.google.type.LatLng
+import com.google.android.gms.tasks.CancellationToken
+import com.google.android.gms.tasks.OnTokenCanceledListener
 import java.util.*
 
 // This class is architected as a Singleton
-class LocalHelper private constructor() {
+class LocationHelper private constructor() {
     // ----------------
     // tag
     // ----------------
@@ -31,7 +28,7 @@ class LocalHelper private constructor() {
     // singleton
     // ----------------
     companion object {
-        val instance = LocalHelper()
+        val instance = LocationHelper()
     }
 
     var locationPermissionGranted = false
@@ -42,38 +39,37 @@ class LocalHelper private constructor() {
     // ----------------
     // locations properties
     // ----------------
-    // TODO: Add properties relating to location services
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var geocoder: Geocoder
-    var currentLocation : MutableLiveData<Location>? = MutableLiveData<Location>()
-    private val locationRequest : com.google.android.gms.location.LocationRequest =
-        com.google.android.gms.location.LocationRequest.Builder(Priority.PRIORITY_BALANCED_POWER_ACCURACY,3000).build()
+
+    var lastLocation : Location? = null
+    var realCurrentLocation : Location? = null
+    private val locationRequest : CurrentLocationRequest = CurrentLocationRequest.Builder().build()
 
     init {
-        // TODO: Instantiate location related variables here
     }
 
     @SuppressLint("MissingPermission")
-    fun getLastLocation(context: Context) : MutableLiveData<Location>?{
+    fun getLastLocation(context: Context) : Location?{
         if (locationPermissionGranted){
             fusedLocationClient = getFusedLocationProviderClient(context)
             fusedLocationClient.lastLocation.addOnSuccessListener {location ->
 
                 if (location != null){
-                    this.currentLocation!!.value = location
-                    Log.e(TAG, "getLastLocation: last location obtained : ${this.currentLocation}", )
+                    this.lastLocation = location
+                    Log.e(TAG, "getLastLocation: last location obtained : ${this.lastLocation}" )
                 }else{
-                    Log.e(TAG, "getLastLocation: Not able to get last known location", )
+                    Log.e(TAG, "getLastLocation: Not able to get last known location" )
                 }
 
             }.addOnFailureListener {
-                Log.e(TAG, "getLastLocation: Failed to get the last known location ${it}", )
+                Log.e(TAG, "getLastLocation: Failed to get the last known location ${it}" )
             }
 
-            return this.currentLocation
+            return this.lastLocation
 
         }else {
-            Log.e(TAG, "getLastLocation: No location permission granted",)
+            Log.e(TAG, "getLastLocation: No location permission granted")
             requestLocationPermission(context)
         }
 
@@ -81,64 +77,43 @@ class LocalHelper private constructor() {
     }
 
     @SuppressLint("MissingPermission")
-    fun requestLocationUpdates(context: Context, locationCallback: LocationCallback){
+    fun getCurrentLocation(context: Context) : Location?{
+        val localCurrentLocation : Location
         if (locationPermissionGranted){
-            try{
-                fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper())
-            }catch (ex: Exception){
-                Log.e(TAG, "requestLocationUpdates: Failed to get lcoation updates ${ex}", )
-            }
-        }else{
-            Log.e(TAG, "requestLocationUpdates: No permission", )
+            fusedLocationClient = getFusedLocationProviderClient(context)
+            fusedLocationClient.getCurrentLocation(locationRequest, object : CancellationToken(){
+                override fun onCanceledRequested(p0: OnTokenCanceledListener): CancellationToken {
+                    return this
+                }
+                override fun isCancellationRequested(): Boolean {
+                    return false
+                }
+
+            })
+                .addOnSuccessListener {location ->
+                    if (location != null){
+                        realCurrentLocation = location
+                        Log.e(TAG, "getCurrentLocation: current location obtained : ${realCurrentLocation}" )
+                    }else{
+                        Log.e(TAG, "getCurrentLocation: Not able to get last known location" )
+                    }
+                }
         }
+        return realCurrentLocation
     }
 
-    fun stopLocationUpdates(context: Context, locationCallback: LocationCallback){
-        try{
-            fusedLocationClient.removeLocationUpdates(locationCallback)
-        }catch (ex: Exception){
-            Log.e(TAG, "stopLocationUpdates: Failed to stop lcoation updates ${ex}", )
-        }
-    }
-
-    /* ----------------------------- START LOCATION SERVICES CODE -------------------------------*/
-
-//    // TODO: Functions relating to location services
-//
-//    @SuppressLint("MissingPermission")
-//    fun getLastLocation (context: Context): MutableLiveData<Location>?{
-//        fusedLocationClient = LocationServices.getFusedLocationProviderClient(context)
-//        var locallocation : Location
-//        if(locationPermissionGranted){
-//            fusedLocationClient.lastLocation
-//                .addOnSuccessListener { location ->
-//                    if(location != null){
-//                        locallocation = location
-//                    }
-//                }
-//                .addOnFailureListener { location ->
-//                    Log.d("D1", "Get Last Location Fail")
-//                }
-//            return locallocation
-//
-//        }else{
-//            return null
-//        }
-//    }
-    fun performForwardGeocoding(context: Context, location: LatLng): Address? {
+    fun performForwardGeocoding(context: Context, location: com.google.android.gms.maps.model.LatLng): Address? {
+        Log.d("D1", "LocationHelper: doing forwardGeocode")
         geocoder = Geocoder(context, Locale.getDefault())
         val decodedLocation = geocoder.getFromLocation(location.latitude, location.longitude,1)
-    if(decodedLocation != null){
-        return decodedLocation[0]
-    }else{
-        Log.d("D1", "Decoding Address error")
-        return null
+        return if(decodedLocation != null){
+            Log.d("D1", "LocationHelper: forwardGeocode success")
+            decodedLocation[0]
+        }else{
+            Log.d("D1", "Decoding Address error")
+            null
+        }
     }
-
-//    fun calcDistance(location1: LatLng, location2: LatLng){
-//    }
-
-}
 
     // permission helpers
 

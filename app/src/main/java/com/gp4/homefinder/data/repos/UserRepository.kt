@@ -8,6 +8,9 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.gp4.homefinder.data.DataSource
+import com.gp4.homefinder.data.helpers.HouseAddToUserSuccessCallback
+import com.gp4.homefinder.data.helpers.HouseCreateSuccessCallback
+import com.gp4.homefinder.data.models.House
 
 
 class UserRepository {
@@ -16,6 +19,7 @@ class UserRepository {
     //fb
     private val db = Firebase.firestore
     private val collectionName = "users"
+    private val houseCollectionName = "houses"
     private val nickname = "nickname"
     private val address = "address"
     private val email = "email"
@@ -56,10 +60,22 @@ class UserRepository {
                     .addOnFailureListener { err ->
                         Log.d(TAG, "Problem: $err")
                     }
-            }
+                }
             //fb set data using fb auth uid as key
 
+            }
         }
+
+    fun addHouseToUser(newHouseId:String, newHouse:House, houseAddToUserSuccessCallback: HouseAddToUserSuccessCallback){
+        dataSource = DataSource.getInstance()
+        myData
+            .document(dataSource.currentUser!!.id)
+            .collection(houseCollectionName)
+            .document(newHouseId)
+            .set(newHouse)
+            .addOnSuccessListener {
+                houseAddToUserSuccessCallback.houseAddSuccessCallback()
+            }
     }
 
     //Sign In Event

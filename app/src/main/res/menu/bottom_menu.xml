@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="Home" android:icon="@drawable/ic_baseline_home_24"></item>
-    <item android:title="Setting" android:icon="@drawable/ic_baseline_settings_24"></item>
+    <item
+        android:id="@+id/houseListingFragment"
+        android:title="Home"
+        android:icon="@drawable/ic_baseline_home_24"
+        />
+    <item
+        android:id="@+id/myHouseFragment"
+        android:title="My House"
+        android:icon="@drawable/ic_baseline_settings_24"
+        />
 </menu>

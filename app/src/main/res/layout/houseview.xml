@@ -1,7 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:id="@+id/house_view_address_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Address:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/house_view_address"
+        />
+
+    <TextView
+        android:id="@+id/house_view_address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Location"
+        app:layout_constraintEnd_toEndOf="@+id/house_view_water_chip"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/house_view_address_tv" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/type_chip"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Type"
+        android:enabled="false"
+        app:layout_constraintBottom_toTopOf="@+id/house_view_rent_tv"
+        app:layout_constraintEnd_toEndOf="@+id/house_view_rent_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/house_view_address" />
+
+    <TextView
+        android:id="@+id/house_view_rent_tv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Rent"
+        app:layout_constraintBottom_toTopOf="@id/house_view_rent"
+        app:layout_constraintEnd_toStartOf="@+id/house_view_water_chip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/type_chip"
+        app:layout_constraintVertical_weight="0.1" />
+
+    <TextView
+        android:id="@+id/house_view_rent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="$9999"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/house_view_people_tv"
+        app:layout_constraintEnd_toEndOf="@+id/house_view_rent_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/house_view_rent_tv"
+        app:layout_constraintVertical_weight="0.3" />
+
+    <TextView
+        android:id="@+id/house_view_people_tv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="For"
+        app:layout_constraintBottom_toTopOf="@id/house_view_people"
+        app:layout_constraintEnd_toEndOf="@+id/house_view_rent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/house_view_rent"
+        app:layout_constraintVertical_weight="0.1" />
+
+    <TextView
+        android:id="@+id/house_view_people"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="0"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/house_view_rent_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/house_view_people_tv"
+        app:layout_constraintVertical_weight="0.4" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/house_view_water_chip"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:focusable="false"
+        android:layout_marginHorizontal="5dp"
+        android:textAlignment="center"
+        android:text="Water"
+        android:enabled="false"
+        app:layout_constraintStart_toEndOf="@id/house_view_rent_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/house_view_address" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/house_view_heat_chip"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:text="Heat"
+        android:textAlignment="center"
+        android:enabled="false"
+        app:layout_constraintEnd_toEndOf="@+id/house_view_hydro_chip"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/house_view_hydro_chip"
+        app:layout_constraintTop_toBottomOf="@+id/house_view_water_chip" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/house_view_hydro_chip"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:text="Hydro"
+        android:textAlignment="center"
+        android:enabled="false"
+        app:layout_constraintEnd_toEndOf="@+id/house_view_water_chip"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/house_view_water_chip"
+        app:layout_constraintTop_toBottomOf="@+id/house_view_heat_chip" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/house_view_pet_chip"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:text="Pet"
+        android:textAlignment="center"
+        android:enabled="false"
+        app:layout_constraintEnd_toEndOf="@+id/house_view_hydro_chip"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/house_view_hydro_chip"
+        app:layout_constraintTop_toBottomOf="@+id/house_view_hydro_chip" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/house_view_smoke_chip"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:text="Smoke"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/house_view_hydro_chip"
+        android:enabled="false"
+        app:layout_constraintStart_toStartOf="@+id/house_view_hydro_chip"
+        app:layout_constraintTop_toBottomOf="@+id/house_view_pet_chip" />
 
 
 

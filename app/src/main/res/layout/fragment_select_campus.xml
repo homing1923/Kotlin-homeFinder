@@ -13,6 +13,8 @@
         android:layout_height="0dp"
         app:layout_constraintVertical_weight="0.1"
         android:text="Where are you?"
+        android:textSize="18sp"
+        android:gravity="center_horizontal|center_vertical"
         app:layout_constraintBottom_toTopOf="@+id/select_campus_container"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -51,14 +53,31 @@
                 app:layout_constraintStart_toStartOf="@id/select_campus_rdg_opt1"
                 app:layout_constraintTop_toBottomOf="@id/select_campus_rdg_opt1"
                 android:autofillHints="Address" />
-
-            <Button
-                android:id="@+id/btn_search_campus"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Search"
-                android:layout_gravity="center"/>
-
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btn_search_campus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Search"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btn_use_current_campus"
+                    android:layout_gravity="center"/>
+                <Button
+                    android:id="@+id/btn_use_current_campus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Use my loction"
+                    app:layout_constraintTop_toTopOf="@id/btn_search_campus"
+                    app:layout_constraintBottom_toBottomOf="@id/btn_search_campus"
+                    app:layout_constraintStart_toEndOf="@id/btn_search_campus"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_gravity="center"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
             <RadioButton
                 android:id="@+id/select_campus_rdg_opt2"
                 android:layout_width="match_parent"
@@ -74,10 +93,21 @@
         android:id="@+id/select_campus_rdg_opt2_lv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintVertical_weight="0.3"
-        app:layout_constraintBottom_toTopOf="@id/select_campus_send_btn"
+        app:layout_constraintVertical_weight="0.5"
+        app:layout_constraintBottom_toTopOf="@id/select_campus_selected_campus"
         app:layout_constraintStart_toStartOf="@+id/select_campus_title"
         app:layout_constraintTop_toBottomOf="@id/select_campus_container" />
+
+    <TextView
+        android:id="@+id/select_campus_selected_campus"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="Select A Campus To Continue"
+        android:gravity="center_horizontal|center_vertical"
+        app:layout_constraintVertical_weight="0.1"
+        app:layout_constraintTop_toBottomOf="@id/select_campus_rdg_opt2_lv"
+        app:layout_constraintBottom_toTopOf="@id/select_campus_send_btn"/>
+
     <Button
         android:id="@+id/select_campus_send_btn"
         android:layout_width="0dp"
@@ -89,6 +119,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/select_campus_rdg_opt2_lv"/>
+        app:layout_constraintTop_toBottomOf="@id/select_campus_selected_campus"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

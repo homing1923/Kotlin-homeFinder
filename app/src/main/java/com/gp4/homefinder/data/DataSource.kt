@@ -1,8 +1,8 @@
 package com.gp4.homefinder.data
 
-import android.util.Log
 import com.gp4.homefinder.data.models.Campus
 import com.gp4.homefinder.data.models.User
+import java.time.LocalDate
 
 class DataSource(
     val listOfSchools: List<String> = listOf(
@@ -43,7 +43,8 @@ class DataSource(
     Campus("Tyndale University","Main","3377 Bayview Ave, North York, ON M2M 3S4",43.7967694,-79.3921565,postal = "M2M 3S4")
     ),
     var mapOfCampus: MutableMap<String, MutableList<Campus>> = mutableMapOf(),
-    var campusLatLngs: String = ""
+    var campusLatLngs: String = "",
+    var simpleCampusList:MutableList<String> = mutableListOf(),
 )
 {
     init{
@@ -54,10 +55,11 @@ class DataSource(
             if(mapOfCampus[each.SchoolName] !== null){
                 mapOfCampus[each.SchoolName]!!.add(each)
                 campusLatLngs += "${each.lat},${each.lng}"
-                if(i != listOfCampus.size-1){
+                if(i != listOfCampus.size -1){
                     campusLatLngs += "|"
                 }
             }
+            simpleCampusList.add("${each.SchoolName} - ${each.campus}")
         }
     }
 
@@ -78,4 +80,7 @@ class DataSource(
     //Global variables
     var currentUser: User? = null
     var currentCampus: Campus? = null
+    var currentCampusId: Int? = null
+    var dateForHouseCreate: LocalDate? = null
+    var currentHouseList: MutableList<Campus>? = mutableListOf()
 }

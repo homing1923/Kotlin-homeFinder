@@ -12,125 +12,188 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:text="Share Your Place"
+        android:layout_marginVertical="8dp"
+        android:layout_marginHorizontal="15dp"
+        android:textColor="@color/ChampagnePink_3"
+        android:background="@color/SteelTeal_10"
         android:textAlignment="center"
-        android:textSize="28sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@id/add_info_container1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_weight="0.08" />
+        app:layout_constraintVertical_weight="0.1" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/add_info_container1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginHorizontal="8dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/ChampagnePink_3"
         app:layout_constraintEnd_toEndOf="@id/add_title"
         app:layout_constraintStart_toStartOf="@id/add_title"
         app:layout_constraintTop_toBottomOf="@id/add_title"
         app:layout_constraintBottom_toTopOf="@id/add_info_container2"
-        app:layout_constraintVertical_weight="0.6">
+        app:layout_constraintVertical_weight="0.7">
+
         <TextView
             android:id="@+id/add_address_tv"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@color/Ecru_13"
+            android:gravity="center_horizontal|center_vertical"
             android:text="Address"
-            app:layout_constraintVertical_weight="0.1"
-            app:layout_constraintHorizontal_weight="0.3"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@id/add_campus_tv"
             app:layout_constraintEnd_toStartOf="@id/add_address_edt"
+            app:layout_constraintHorizontal_weight="0.3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/add_type_tv"/>
+            app:layout_constraintVertical_weight="0.1" />
 
         <EditText
             android:id="@+id/add_address_edt"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:autofillHints="Enter Address here"
+            android:gravity="center_horizontal|center_vertical"
             android:hint="Enter Address here"
             android:inputType="text"
-            app:layout_constraintHorizontal_weight="0.7"
+            app:layout_constraintBottom_toBottomOf="@id/add_address_tv"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="0.7"
             app:layout_constraintStart_toEndOf="@id/add_address_tv"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/add_address_tv"/>
+            app:layout_constraintTop_toTopOf="@+id/add_address_tv" />
+
+        <TextView
+            android:id="@+id/add_campus_tv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/Ecru_13"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="Campus"
+            android:layout_marginTop="8dp"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@id/add_type_tv"
+            app:layout_constraintEnd_toEndOf="@+id/add_address_tv"
+            app:layout_constraintEnd_toStartOf="@id/add_address_edt"
+            app:layout_constraintHorizontal_weight="0.1"
+            app:layout_constraintStart_toStartOf="@+id/add_address_tv"
+            app:layout_constraintTop_toBottomOf="@id/add_address_tv"
+            app:layout_constraintVertical_weight="0.1" />
+
+        <Spinner
+            android:id="@+id/add_campus_edt"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autofillHints="Enter Campus here"
+            android:hint="Enter Campus here"
+            android:inputType="text"
+            app:layout_constraintHorizontal_weight="0.4"
+            app:layout_constraintBottom_toBottomOf="@id/add_campus_tv"
+            app:layout_constraintEnd_toStartOf="@id/btn_create_search_by_address"
+            app:layout_constraintStart_toStartOf="@id/add_address_edt"
+            app:layout_constraintTop_toTopOf="@+id/add_campus_tv" />
+
+        <Button
+            android:id="@+id/btn_create_search_by_address"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:textSize="8sp"
+            android:text="GET"
+            android:layout_marginHorizontal="5dp"
+            app:layout_constraintHorizontal_weight="0.1"
+            app:layout_constraintBottom_toBottomOf="@+id/add_campus_edt"
+            app:layout_constraintEnd_toEndOf="@id/add_address_edt"
+            app:layout_constraintStart_toEndOf="@id/add_campus_edt"
+            app:layout_constraintTop_toTopOf="@id/add_campus_edt" />
 
         <TextView
             android:id="@+id/add_type_tv"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@color/Ecru_13"
+            android:gravity="center_horizontal|center_vertical"
             android:text="Type"
-            app:layout_constraintVertical_weight="0.1"
+            android:textSize="20sp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toTopOf="@id/add_people_tv"
+            app:layout_constraintEnd_toEndOf="@+id/add_address_tv"
             app:layout_constraintHorizontal_weight="0.3"
-            app:layout_constraintEnd_toStartOf="@id/add_type_edt"
-            app:layout_constraintStart_toStartOf="@id/add_address_tv"
-            app:layout_constraintTop_toBottomOf="@id/add_address_tv"
-            app:layout_constraintBottom_toTopOf="@id/add_people_tv"/>
+            app:layout_constraintStart_toStartOf="@+id/add_address_tv"
+            app:layout_constraintTop_toBottomOf="@id/add_campus_tv"
+            app:layout_constraintVertical_weight="0.1" />
 
-        <EditText
-            android:id="@+id/add_type_edt"
+        <Spinner
+            android:id="@+id/add_type_spinner"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:autofillHints="Enter Address here"
             android:hint="Enter Address here"
             android:inputType="text"
-            app:layout_constraintHorizontal_weight="0.7"
-            app:layout_constraintStart_toEndOf="@id/add_type_tv"
-            app:layout_constraintTop_toTopOf="@id/add_type_tv"
-            app:layout_constraintEnd_toEndOf="@id/add_address_edt"
             app:layout_constraintBottom_toBottomOf="@id/add_type_tv"
-            />
+            app:layout_constraintEnd_toEndOf="@id/add_address_edt"
+            app:layout_constraintHorizontal_weight="0.7"
+            app:layout_constraintStart_toStartOf="@+id/add_address_edt"
+            app:layout_constraintTop_toTopOf="@id/add_type_tv" />
 
         <TextView
             android:id="@+id/add_people_tv"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@color/Ecru_13"
+            android:gravity="center_horizontal|center_vertical"
             android:text="People"
-            app:layout_constraintVertical_weight="0.1"
+            android:textSize="20sp"
+            android:layout_marginVertical="8dp"
+            app:layout_constraintBottom_toTopOf="@id/add_rent_tv"
+            app:layout_constraintEnd_toEndOf="@+id/add_address_tv"
             app:layout_constraintHorizontal_weight="0.3"
-            app:layout_constraintEnd_toStartOf="@id/add_type_edt"
             app:layout_constraintStart_toStartOf="@id/add_type_tv"
             app:layout_constraintTop_toBottomOf="@id/add_type_tv"
-            app:layout_constraintBottom_toTopOf="@id/add_rent_tv"/>
+            app:layout_constraintVertical_weight="0.1" />
 
         <EditText
             android:id="@+id/add_people_edt"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:autofillHints="Enter Address here"
-            android:hint="Enter Address here"
-            android:inputType="text"
-            app:layout_constraintHorizontal_weight="0.7"
+            android:hint="Number Of People?"
+            android:inputType="number"
             app:layout_constraintBottom_toBottomOf="@+id/add_people_tv"
             app:layout_constraintEnd_toEndOf="@id/add_address_edt"
-            app:layout_constraintStart_toEndOf="@+id/add_address_tv"
+            app:layout_constraintHorizontal_weight="0.7"
+            app:layout_constraintStart_toStartOf="@+id/add_address_edt"
             app:layout_constraintTop_toTopOf="@+id/add_people_tv" />
 
         <TextView
             android:id="@+id/add_rent_tv"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@color/Ecru_13"
+            android:gravity="center_horizontal|center_vertical"
             android:text="Rent"
-            app:layout_constraintVertical_weight="0.1"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/add_address_tv"
             app:layout_constraintHorizontal_weight="0.3"
-            app:layout_constraintEnd_toStartOf="@id/add_rent_edt"
             app:layout_constraintStart_toStartOf="@id/add_address_tv"
             app:layout_constraintTop_toBottomOf="@id/add_people_tv"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintVertical_weight="0.1" />
 
         <EditText
             android:id="@+id/add_rent_edt"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:autofillHints="Enter Address here"
-            android:hint="Enter Address here"
-            android:inputType="text"
-            app:layout_constraintHorizontal_weight="0.7"
+            android:hint="Rent Per Person?"
+            android:inputType="number"
+            app:layout_constraintBottom_toBottomOf="@id/add_rent_tv"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/add_rent_tv"
-            app:layout_constraintTop_toTopOf="@id/add_rent_tv"
-            app:layout_constraintBottom_toBottomOf="@id/add_rent_tv"/>
+            app:layout_constraintHorizontal_weight="0.7"
+            app:layout_constraintStart_toStartOf="@+id/add_address_edt"
+            app:layout_constraintTop_toTopOf="@id/add_rent_tv" />
 
 
 
@@ -140,20 +203,19 @@
         android:id="@+id/add_info_container2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginVertical="8dp"
+        android:layout_marginHorizontal="15dp"
         app:layout_constraintEnd_toEndOf="@id/add_info_container1"
-        app:layout_constraintHorizontal_weight="0.1"
         app:layout_constraintStart_toStartOf="@id/add_info_container1"
         app:layout_constraintTop_toBottomOf="@id/add_info_container1"
         app:layout_constraintBottom_toTopOf="@id/add_info_container3"
-        app:layout_constraintVertical_weight="0.3">
+        app:layout_constraintVertical_weight="0.35">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/add_info_container2_sub1"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginTop="5dp"
-            android:background="@color/Sage_12"
+            android:background="@color/ChampagnePink_3"
             app:layout_constraintHorizontal_weight="0.1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/add_info_container2_sub2"
@@ -163,8 +225,10 @@
             <TextView
                 android:id="@+id/add_info_container2_sub1_hydro_tv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
+                android:layout_height="0dp"
+                android:background="@color/Ecru_13"
+                android:gravity="center_vertical|center_horizontal"
+                android:textSize="18sp"
                 android:text="Hydro?"
                 app:layout_constraintBottom_toTopOf="@id/add_info_container2_sub1_hydro_checkbox"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -174,7 +238,9 @@
             <CheckBox
                 android:id="@+id/add_info_container2_sub1_hydro_checkbox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:textSize="16sp"
+                android:text="Included"
                 app:layout_constraintBottom_toTopOf="@+id/add_info_container2_sub1_hydro_edt"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -183,9 +249,9 @@
             <EditText
                 android:id="@+id/add_info_container2_sub1_hydro_edt"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:inputType="number"
-                android:hint="enter amount"
+                android:hint="Enter amount"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -197,8 +263,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginHorizontal="8dp"
-            android:layout_marginTop="5dp"
-            android:background="@color/Sage_12"
+            android:background="@color/ChampagnePink_3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/add_info_container2_sub3"
             app:layout_constraintHorizontal_weight="0.1"
@@ -208,8 +273,11 @@
             <TextView
                 android:id="@+id/add_info_container2_sub2_heat_tv"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:text="Heat?"
+                android:background="@color/Ecru_13"
+                android:gravity="center_vertical|center_horizontal"
+                android:textSize="18sp"
                 android:textAlignment="center"
                 app:layout_constraintBottom_toTopOf="@id/add_info_container2_sub2_heat_checkbox"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -219,7 +287,9 @@
             <CheckBox
                 android:id="@+id/add_info_container2_sub2_heat_checkbox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:textSize="16sp"
+                android:text="Included"
                 app:layout_constraintBottom_toTopOf="@+id/add_info_container2_sub2_heat_edt"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -228,8 +298,9 @@
             <EditText
                 android:id="@+id/add_info_container2_sub2_heat_edt"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:inputType="number"
+                android:hint="Enter amount"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -240,9 +311,7 @@
             android:id="@+id/add_info_container2_sub3"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginTop="5dp"
-            android:background="@color/Sage_12"
+            android:background="@color/ChampagnePink_3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_weight="0.1"
@@ -252,9 +321,12 @@
             <TextView
                 android:id="@+id/add_info_container2_sub3_water_tv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:text="Water?"
                 android:textAlignment="center"
+                android:textSize="18sp"
+                android:background="@color/Ecru_13"
+                android:gravity="center_vertical|center_horizontal"
                 app:layout_constraintBottom_toTopOf="@id/add_info_container2_sub3_water_checkbox"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -263,7 +335,9 @@
             <CheckBox
                 android:id="@+id/add_info_container2_sub3_water_checkbox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:textSize="16sp"
+                android:text="Included"
                 app:layout_constraintBottom_toTopOf="@+id/add_info_container2_sub3_water_edt"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -272,8 +346,9 @@
             <EditText
                 android:id="@+id/add_info_container2_sub3_water_edt"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:inputType="number"
+                android:hint="Enter amount"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -285,73 +360,91 @@
         android:id="@+id/add_info_container3"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintVertical_weight="0.2"
         app:layout_constraintBottom_toTopOf="@id/add_info_container4"
         app:layout_constraintEnd_toEndOf="@id/add_info_container1"
-        app:layout_constraintStart_toStartOf="@id/add_info_container1"
-        app:layout_constraintTop_toBottomOf="@id/add_info_container2">
+        app:layout_constraintStart_toStartOf="@+id/add_info_container1"
+        app:layout_constraintTop_toBottomOf="@id/add_info_container2"
+        app:layout_constraintVertical_weight="0.15">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/add_info_container3_sub1"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginHorizontal="8dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="5dp"
-            app:layout_constraintHorizontal_weight="0.1"
+            android:background="@color/ChampagnePink_3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/add_info_container3_sub2"
+            app:layout_constraintHorizontal_weight="0.1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/add_info_container3_sub1_pet_tv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:background="@color/Ecru_13"
                 android:text="Pet?"
+                android:textAlignment="center"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@id/add_info_container3_sub1_pet_checkbox"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_weight="0.5" />
 
             <CheckBox
                 android:id="@+id/add_info_container3_sub1_pet_checkbox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Allow"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/add_info_container3_sub1_pet_tv" />
+                app:layout_constraintTop_toBottomOf="@id/add_info_container3_sub1_pet_tv"
+                app:layout_constraintVertical_weight="0.7" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/add_info_container3_sub2"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginHorizontal="8dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="5dp"
-            app:layout_constraintHorizontal_weight="0.1"
+            android:layout_marginEnd="15dp"
+            android:background="@color/ChampagnePink_3"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/add_info_container3_sub1"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="0.1"
+            app:layout_constraintStart_toEndOf="@id/add_info_container3_sub1"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/add_info_container3_sub2_smoke_tv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:background="@color/Ecru_13"
                 android:text="Smoke"
+                android:textAlignment="center"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@id/add_info_container3_sub2_smoke_checkbox"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_weight="0.5" />
 
             <CheckBox
                 android:id="@+id/add_info_container3_sub2_smoke_checkbox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Allow"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/add_info_container3_sub2_smoke_tv" />
+                app:layout_constraintTop_toBottomOf="@id/add_info_container3_sub2_smoke_tv"
+                app:layout_constraintVertical_weight="0.7" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -359,11 +452,36 @@
         android:id="@+id/add_info_container4"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintVertical_weight="0.1"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/ChampagnePink_3"
+        app:layout_constraintVertical_weight="0.15"
         app:layout_constraintBottom_toTopOf="@id/create_house_btn"
         app:layout_constraintEnd_toEndOf="@id/add_info_container1"
         app:layout_constraintStart_toStartOf="@id/add_info_container1"
         app:layout_constraintTop_toBottomOf="@id/add_info_container3">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/add_info_date_tv"
+            app:layout_constraintHorizontal_weight="0.3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/add_info_date_edt"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="Available from"
+            android:gravity="center_horizontal|center_vertical"
+            />
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/add_info_date_edt"
+            android:textAlignment="center"
+            app:layout_constraintHorizontal_weight="0.7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/add_info_date_tv"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
