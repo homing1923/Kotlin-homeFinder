@@ -12,6 +12,6 @@ interface IAPIResponse {
     suspend fun getDistances(
         @Query("origins") oriLatLng:String,
         @Query("destinations") desLatLngS:String,
-        @Query("key") key:String = "AIzaSyDiVSCYbrAE8ida_JjyXZoNxYVJZB0yxYU"
+        @Query("key") key:String = ""
     ):DistanceResponse
 }
